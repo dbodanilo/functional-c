@@ -47,6 +47,17 @@ Node* tail(Node* list) {
     return tail;
 }
 
+void* nth(int n, Node* list) {
+    void* val = NULL;
+
+    if(list != NULL && n >= 0) {
+        if (n == 0) {
+            val = list->val;
+        }
+        else val = nth(n - 1, list->tail);        
+    }
+
+    return val;
 }
 
 Node* copyList(Node* lst) {
