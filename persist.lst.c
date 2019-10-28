@@ -47,3 +47,27 @@ Node* tail(Node* list) {
     return tail;
 }
 
+}
+
+Node* copyList(Node* lst) {
+    Node* newLst = NULL;
+
+    if(lst != NULL) {
+        newLst = newNode(lst->val, copyList(lst->tail));
+    }
+
+    return newLst;
+}
+
+Node* append(Node* fstList, Node* sndList) {
+    Node* appended = NULL;
+
+    if(fstList != NULL) {
+        appended = copyList(fstList);
+        last(appended)->tail = sndList;
+    }
+    else appended = sndList;
+
+    return appended;
+}
+
