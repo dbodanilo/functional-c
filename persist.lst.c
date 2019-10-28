@@ -26,3 +26,24 @@ int length(Node* list) {
 
     return len;
 }
+
+void* head(Node* list) {
+    void* val = NULL;
+
+    if(list != NULL) {
+        val = list->val;
+    }
+
+    return val;
+}
+
+Node* tail(Node* list) {
+    Node* tail = NULL;
+
+    if(list != NULL) {
+        tail = list->tail;
+    }
+
+    return tail;
+}
+
