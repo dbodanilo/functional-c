@@ -18,3 +18,11 @@ Node* cons(void* val, Node* tail) {
     return newHead;
 }
 
+int length(Node* list) {
+    int len = 0;
+    if(list != NULL) {
+        len = length(list->tail) + 1;
+    }
+
+    return len;
+}
