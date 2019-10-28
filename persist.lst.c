@@ -91,3 +91,23 @@ Node* makeList(int n) {
 
     return newList;
 }
+
+Node* listFromArray(void* arr[], int n) {
+    Node* list = NULL;
+
+    if(arr != NULL && n > 0) {
+        list = cons(arr[0], listFromArray(arr + 1, n - 1));
+    }
+
+    return list;
+}
+
+Node* map(F f, Node* list) {
+    Node* newList = NULL;
+
+    if(list != NULL) {
+        newList = cons(f(list->val), map(f, list->tail));
+    }
+
+    return newList;
+}

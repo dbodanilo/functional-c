@@ -51,6 +51,19 @@ void show(Node* list) {
     printf("%s\n", stringFromList(list));
 }
 
+void* intPlus1(void* ref) {
+    int* resRef = NULL;
+
+    if(ref != NULL) {
+        int* valRef = ref;
+        resRef = malloc(sizeof(int));
+
+        *resRef = (*valRef) + 1;
+    }
+
+    return resRef;
+}
+
 int main() {
     Node* list = cons(newInt(1), cons(newInt(2), cons(newInt(3), NULL)));
 
@@ -62,18 +75,39 @@ int main() {
     int headVal = headRef != NULL ? *headRef : sentinel;
     int val = idxRef != NULL ? *idxRef : sentinel;
 
-    printf("list[head] = %d\t(sentinel = %d)\n", headVal, sentinel);
-    printf("list[%d] = %d\t(sentinel = %d)\n", idx, val, sentinel);
+    printf("list[0] = %d\n", headVal);
+    printf("list[%d] = %d\n", idx, val);
+    printf("\t(sentinel = %d)\n", sentinel);
 
     Node* newList = cons(newInt(4), NULL);
     Node* appended = append(list, newList);
-    Node* list2 = append(NULL, list);
+    Node* list2 = append(list, NULL);
+    
+    void* arr[] = { newInt(4), newInt(5), newInt(6) };
+    Node* fromArr = listFromArray(arr, 3);
+    
+    Node* mapped = map(intPlus1, fromArr);
 
+    puts("list:");
     show(list);
+
+    puts("newList:");
     show(newList);
+
+    puts("list ++ newList:");
     show(appended);
+
+    puts("list copy:");
     show(list2);
+
+    puts("empty 5-element list:");
     show(makeList(5));
+
+    puts("list from array:");
+    show(fromArr);
+
+    puts("map fromArr (+ 1):");
+    show(mapped);
 
     return 0;
 }

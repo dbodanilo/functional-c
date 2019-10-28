@@ -6,6 +6,9 @@ struct node {
     Node* tail;
 };
 
+// generic single-argument function
+typedef void* (*F)(void*);
+
 Node* newNode(void* val, Node* tail);
 
 // -- Persistent List --
@@ -17,10 +20,14 @@ void* head(Node* list);
 
 Node* tail(Node* list);
 
+void* nth(int n, Node* list);
+
 Node* copyList(Node* lst);
 
 Node* append(Node* fstList, Node* sndList);
 
 Node* makeList(int n);
 
-void* nth(int n, Node* list);
+Node* listFromArray(void* arr[], int n);
+
+Node* map(F f, Node* list);
