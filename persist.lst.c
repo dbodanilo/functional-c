@@ -82,3 +82,12 @@ Node* append(Node* fstList, Node* sndList) {
     return appended;
 }
 
+Node* makeList(int n) {
+    Node* newList = NULL;
+
+    if(n > 0) {
+        newList = newNode(NULL, makeList(n - 1));
+    }
+
+    return newList;
+}
