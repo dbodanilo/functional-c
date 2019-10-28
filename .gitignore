@@ -1,0 +1,6 @@
+# build & project files
+*.exe
+*.dev
+*.layout
+*.o
+*.win
