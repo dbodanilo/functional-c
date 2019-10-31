@@ -3,19 +3,13 @@
 
 #include "persist.lst.h"
 
-Node* newNode(void* val, Node* tail) {
+// persistent list functions
+Node* cons(void* val, Node* tail) {
     Node* newRef = malloc(sizeof(Node));
     newRef->val = val;
     newRef->tail = tail;
 
     return newRef;
-}
-
-// persistent list functions
-Node* cons(void* val, Node* tail) {
-    Node* newHead = newNode(val, tail);
-
-    return newHead;
 }
 
 int length(Node* list) {
@@ -75,7 +69,7 @@ Node* copyList(Node* lst) {
     Node* newLst = NULL;
 
     if(lst != NULL) {
-        newLst = newNode(lst->val, copyList(lst->tail));
+        newLst = cons(lst->val, copyList(lst->tail));
     }
 
     return newLst;
@@ -99,7 +93,7 @@ Node* makeList(int n) {
     Node* newList = NULL;
 
     if(n > 0) {
-        newList = newNode(NULL, makeList(n - 1));
+        newList = cons(NULL, makeList(n - 1));
     }
 
     return newList;
