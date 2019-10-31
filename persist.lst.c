@@ -60,6 +60,17 @@ void* nth(int n, Node* list) {
     return val;
 }
 
+Node* last(Node* list) {
+    Node* lastCons = NULL;
+
+    if(list != NULL) {
+        if(list->tail == NULL) lastCons = list;
+        else lastCons = last(list->tail);
+    }
+
+    return lastCons;
+}
+
 Node* copyList(Node* lst) {
     Node* newLst = NULL;
 
@@ -75,6 +86,8 @@ Node* append(Node* fstList, Node* sndList) {
 
     if(fstList != NULL) {
         appended = copyList(fstList);
+        // surely won't be a null reference, 
+        // as fstList has at least one element
         last(appended)->tail = sndList;
     }
     else appended = sndList;
