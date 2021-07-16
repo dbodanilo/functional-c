@@ -5,5 +5,7 @@
 *.o
 *.win
 
+*.out
+
 # vs code
 .vscode
